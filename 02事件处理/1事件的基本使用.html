@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+<!-- js事件的方法调用，后面的括号不可省略 -->
+        <button onclick="show">js事件单击1</button>
+<!-- vue事件：1、v-on:click，调用的方法在vm实例里进行，完整写法 -->
+        <button v-on:click="show()" >vue事件点击</button>
+        <!-- vue事件 简化的写法，，方法后面的括号可以省略 -->
+        <button  @click="show">vue事件点击2</button>
+        <!--  -->
+        <button @click="show2">事件单价2-0</button>
+
+        <!-- 1、可调用的函数；2、js语句 -->
+         <button @click="count++">点我+1---{{count}}---</button>
+<hr>
+<!-- 带参数的函数 -->
+<button @click="showInfo('参数666')">弹出框内容为参数值</button>
+<button @click="showInfo($event)">方法带括号$event</button>
+
+<!-- 若不带括号时，默认携带参数 $event -->
+<button @click="showInfo">方法不带括号</button>
+<button @click="showInfo2($event,'参数111','参数222')">两个参数</button>
+
+
+
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            count:0
+        },
+        // 定义vue的函数方法
+        methods: {
+            // 1、事件方法的完整写法
+            show: function (){
+                alert("vue事件单击1");
+ 
+           },
+        //   2、 事件方法的简写
+           show2(){
+               alert("事件单价2-0")
+               
+           },
+           showInfo(str){
+               console.log(event,event.target);
+            alert(str);
+           },
+           showInfo2(e,str1,str2){
+               console.log(str1,str2)
+           }
+        },
+
+    })
+    // 给普通的js调用
+    function show(){
+        alert("js事件单击1");
+    }
+</script>

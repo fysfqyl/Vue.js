@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<!-- 事件触发v-on：
+键盘事件：v-on:keydown,v-on:keyup 
+@keydown,@keyup
+指定按键则使用键盘修饰符 .key 或者 .keyCode
+
+常见的键盘事件： 
+回车=》enter
+删除=>delete
+退出=>esc
+上下左右 =》 up , down left right-->
+<body>
+    <div id="app">
+        <input type="text" @keydown.a ="show()">
+
+        <input type="text" @keydown="show1" >
+
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        methods:{
+            show(){
+                console.log(event.key,event.keyCode);
+            },
+            show1(){
+                console.log(event.key,event.keyCode);
+            }
+        }
+    })
+</script>

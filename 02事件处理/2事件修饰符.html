@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<style>
+    .yellow{
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+    }
+    .red{
+        width: 50px;
+        height: 50px;
+        background-color: red;
+     
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- 事件：模板@click  -->
+        <button @click.once="show()">事件使用</button>
+<br>
+<!-- a超链接的默认跳转希望不要发生 -->
+<!-- 事件修饰符
+1、阻止默认事件=>.prevent     a标签、form表单 <form @submit.prevent="">
+2、阻止冒泡=>.stop
+3、只发生一次=>.once 
+-->
+        <a href="https://www.baidu.com/" @click.prevent="show">百度</a>
+
+
+       <div class="yellow" @click="yellow">
+           <div class="red" @click.stop="red">
+
+           </div>
+       </div>
+
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        methods: {
+            show(){
+                alert(event.target.innerText)
+            },
+        red(){
+            alert("点击红色div")
+        },
+        yellow(){
+            alert("点击黄色div")
+        }
+        }
+
+    })
+</script>
