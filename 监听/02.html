@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        姓:<input type="text" v-model="firstName"><br>
+        名:<input type="text" v-model="lastName"><br>
+        全名2:{{name}}
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+           firstName:'张',
+           lastName:'三',
+           name:''
+        },
+        methods: {
+
+            },
+        // 计算属性
+        cpmputed: {
+
+        },
+        watch:{
+            firstName:{
+                immediate:true,
+                handler(newValue,oldValue) {
+                    this.name = this.firstName +'-'+this.lastName
+            }
+            
+        },
+        lastName:{
+            handler(newValue,oldValue) {
+                this.name = this.firstName +'-'+this.lastName
+            }
+        }
+     }
+    })
+</script>

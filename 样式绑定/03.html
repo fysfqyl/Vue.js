@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+    <style>
+        .basic {
+            border: 1px solid #555;
+            width: 300px;
+            height: 100px;
+        }
+        .s {
+            background-color: rgb(11, 235, 205);
+        }
+        .text {
+            font-size: 35px;
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <div class = "basic" :class = "s1">1.vue中class的使用</div>
+
+        <div class="basic" :class = "classArr">2.vue中样式数组的使用</div>
+
+        <div class="basic" :class = "cObj">3.vue中样式对象的使用</div>
+
+        <div class="basic" :style="{fontSize:size + 'px'}">style绑定-对象</div>
+        <button @click="bigger">增大字体</button>
+
+        <div class="basic" :style = "sArr">style数组使用</div>
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+           s1:'s',
+           classArr:['s','text'],
+           cObj:{
+                s:true,
+                text:false,
+           },
+           size:10,
+           sArr:[
+            {
+                backgroundColor:"yellow",
+                color:"red"
+            },
+            {
+                fontSize:'50px'
+            }
+        ]
+        },
+        
+        methods: {
+            bigger() {
+                this.size = this.size + 5
+            }
+        },
+
+    })
+</script>
