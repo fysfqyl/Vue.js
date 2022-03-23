@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>查询过滤</h2>
+        地区：<input type="text" v-model="areaName">
+        <ul>
+            <li v-for = "(item,index) in filterdata" :key="index">
+                {{item.area}}--{{item.name}}--{{item.grade}}--{{item.gender}}--{{item.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            areaName:"",
+            students:[
+                {area:"福州",name:"j",grade:"20级",gender:"男",age:"20"},
+                {area:"北京",name:"a",grade:"19级",gender:"女",age:"21"},
+                {area:"天津",name:"b",grade:"20级",gender:"男",age:"20"},
+                {area:"广州",name:"c",grade:"20级",gender:"女",age:"20"},
+                {area:"厦门",name:"d",grade:"19级",gender:"男",age:"21"}
+            ],
+            filterdata:[]
+        },
+        methods: {
+            
+        },
+        watch:{
+            // areaName(newValue,oldValue) {
+            //     //将数据赋值给filterdata
+            //     this.filterdata=this.students.filter(item=>{
+            //         //过滤数据,indexOf(),表示包含...字的过滤条件
+            //         return item.area.indexOf(newValue)!==-1
+            //     })
+            // }
+
+            //完整写法
+            areaName:{
+                // 立刻执行
+                immediate:true,
+                handler(newValue,oldValue) {
+                    //将数据赋值给filterdata
+                    this.filterdata=this.students.filter(item=>{
+                    //过滤数据,indexOf(),表示包含...字的过滤条件
+                    return item.area.indexOf(newValue)!==-1
+                })
+                }
+            }
+        }
+    })
+</script>
+</html>

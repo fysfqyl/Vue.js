@@ -25,6 +25,9 @@
             Now you don't
           </div> -->
 
+          <h2 v-if="show">欢迎来到福州软件职业技术学院</h2>
+          <h2 v-show="show">欢迎来到福州软件职业技术学院</h2>
+          <button @click = "show = !show">显示/隐藏</button>
     </div>
 </body>
 <script>
@@ -33,6 +36,8 @@
         data: {
             // awesome:"true",
             // ok:false,
+            show:true,
+
         }
     })
 </script>
