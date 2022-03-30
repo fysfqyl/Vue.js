@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="app">
+        <div :style="{marginLeft:left+'px'}">小动画</div>
+        <!-- <button @click="move">开始动画</button> -->
+    </div>
 </body>
 </html>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            left:0,
+            flag:1
+        },
+        methods: {
+            move() {
+                
+            }
+        },
+        mounted(){
+            setInterval(() => {
+                    this.left=this.left+this.flag
+                    if(this.left>300) {
+                        this.flag=-1
+                    }
+                    if(this.left<1) {
+                        this.flag=1
+                    }
+                },10);
+        }
+    })
+</script>
