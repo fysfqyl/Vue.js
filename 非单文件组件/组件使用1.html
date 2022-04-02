@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>原方式</h2>
+        <button @click="n++">被单击{{n}}次</button>
+        <button @click="n1++">被单击{{n2}}次</button>
+        <button @click="n2++">被单击{{n3}}次</button>
+        <!-- 组件可以独立数据 -->
+        <h2>组件</h2>
+        <counter></counter>
+        <ecounter></ecounter>
+    </div>
+</body>
+</html>
+<script>
+    // 定义组件完整写法
+    const counter=Vue.extend({
+        template:`<button @click="n++">被单击{{n}}次</button>`,
+        data(){
+            return{
+                n:0
+            }
+        }
+    })
+    // 简化写法
+    const ecounter=({
+        template:`<button @click="n++">被单击{{n}}次</button>`,
+        data(){
+            return{
+                n:0
+            }
+        }
+    })
+
+    new Vue({
+        el:'#app',
+        data:{
+            n:0,
+            n2:0,
+            n3:0,
+        },
+        methods:{
+
+        },
+        components:{
+            counter:counter,
+            ecounter:ecounter,
+        }
+    })
+</script>
