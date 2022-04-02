@@ -5,12 +5,12 @@
     </div>
 </template>
 <script>
-
 export default {
+    name:"MyStudent",
     data() {
         return {
-            name:"张三",
-            age:"20"
+            name:"王二",
+            age:"18"
         }
     },
 }
