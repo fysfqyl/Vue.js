@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <List :todos="todos"></List>
-    <Footer></Footer>
+    <Header :add="add"/>
+    <List :todos="todos" :delTodo="delTodo"></List>
+    <Footer :todos="todos"></Footer>
   </div>
 </template>
 
@@ -19,6 +19,14 @@ export default {
         {id:"002",title:"英语作业",done:true},
         {id:"003",title:"Vue实验",done:false}
       ]
+    }
+  },
+  methods: {
+    add(obj){
+      this.todos.push(obj)
+    },
+    delTodo(id) {
+      this.todos=this.todos.filter(todo=>todo.id!=id)
     }
   },
   components: {
@@ -38,5 +46,32 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   width: 600px;
+}
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #da4f49;
+  border: 1px solid #bd362f;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #bd362f;
+}
+
+.btn:focus {
+  outline: none;
 }
 </style>
