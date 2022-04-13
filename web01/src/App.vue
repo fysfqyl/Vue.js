@@ -2,7 +2,7 @@
   <div id="app">
     <Header :add="add"/>
     <List :todos="todos" :delTodo="delTodo"></List>
-    <Footer :todos="todos"></Footer>
+    <Footer :todos="todos" :checkAll="checkAll" :clearAll="clearAll"></Footer>
   </div>
 </template>
 
@@ -27,6 +27,14 @@ export default {
     },
     delTodo(id) {
       this.todos=this.todos.filter(todo=>todo.id!=id)
+    },
+    checkAll(done) {
+      this.todos.forEach(todo=>{
+        todo.done=done
+      })
+    },
+    clearAll() {
+      this.todos=this.todos.filter(todo=>todo.done===false)
     }
   },
   components: {
